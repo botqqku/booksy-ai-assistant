@@ -1,2 +1,2 @@
-[x][Frontend demo](assets/front.png)
-[x][Postman demo](assets/postman.png)
+[Frontend demo](assets/front.png)
+[Postman demo](assets/postman.png)
