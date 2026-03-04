@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Booking Assistant</title>
+</head>
+<body>
+  <h1>AI Booking Assistant – Demo</h1>
+  <input type="text" id="message" placeholder="Type your booking..." />
+  <button id="sendBtn">Send</button>
+
+  <pre id="response"></pre>
+
+  <script>
+    const sendBtn = document.getElementById("sendBtn");
+    const responseEl = document.getElementById("response");
+
+    sendBtn.addEventListener("click", async () => {
+      const message = document.getElementById("message").value;
+
+      try {
+        const res = await fetch("http://localhost:3000/message", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message }),
+        });
+
+        const data = await res.json();
+        responseEl.textContent = JSON.stringify(data.reply, null, 2);
+      } catch (err) {
+        responseEl.textContent = "Error: " + err;
+      }
+    });
+  </script>
+</body>
+</html>
